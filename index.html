@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini_interior_design</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體", sans-serif;
+        }
+
+        #menu_control{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .main_nav{
+            position: fixed;
+            width: 100%;
+            display: flex;
+            z-index: 5;
+        }
+        .main_nav .logo{
+            width: 50px;
+            padding: 30px 40px;
+            margin-right: auto;
+        }
+        .main_nav .logo img{
+            width: 100%;
+        }
+        .main_nav .menu_btn{
+            position: relative;
+            margin:30PX 40px 0;
+        }
+        .main_nav .menu_btn a{
+            display:inline-block;
+            text-align: end;
+            width: 130px;
+            font-size: 30px;
+            font-family:"LiHei Pro";
+            color: #fff;
+            text-decoration: none;
+        }
+        .main_nav .menu_btn::before{
+            content:'';
+            position: absolute;
+            height: 3px;
+            width: 38px;
+            top: 5px;
+            left:0;
+            background-color: #fff;
+            box-shadow: 0px 18px 0px #fff;
+        }
+        .main_nav .menu_btn::after{
+            content:'';
+            position: absolute;
+            height: 3px;
+            width: 20px;
+            top: 14px;
+            left:17px;
+            background-color: #fff;
+        }
+
+        .main_nav .hidenav{
+            display: flex;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100vh;
+            background-color: rgb(0, 0, 0,0.8);
+        }
+        .main_nav .hidenav+.hidenav{
+            left: 50%;
+        }
+        .main_nav .hidenav ul{
+            text-align: center;
+        }
+        .main_nav .hidenav ul a{
+            text-decoration: none;
+            font-size: 25px;
+            line-height: 2.5em;
+            color: #fff;
+            font-family:Arial;
+            letter-spacing: 0.3em;
+        }
+        .banner{
+           position: relative;
+           width: 100%;
+           height: 100vh; 
+        }
+        .banner .banner_item{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .banner img{
+            width: 100%;
+            /* height: 100vh; */
+        }
+        .banner .changebutton{
+            display: flex;
+            width: 100%;
+            position: absolute;
+            font-size: 80px;
+            font-family:"微軟正黑體";
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .banner .changebutton div{
+            margin: 0 70px;
+        }
+        .banner .changebutton .next{
+            margin-left:auto;
+        }
+        .banner .changebutton div a{
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.6;
+            transition: 0.5s;
+            text-shadow: 0 0 0.2em #000;
+        }
+        .banner .changebutton div a:hover{
+            opacity: 1;
+        }
+        .scroll{
+            position: absolute;
+            color: #fff;
+            font-size: 25px;
+            text-shadow: 0 0 0.5em #000;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .scroll::after{
+            content:'';
+            position: absolute;
+            height: 25px;
+            width: 2px;
+            bottom: -120%;
+            left:50%;
+            background-color: #fff;
+            box-shadow: 0px -58px 0px #fff;
+        }
+        .news .news_work{
+            position: relative;
+            width: 60%;
+            height: 600px;
+            margin: 160px auto 0;
+            /* background-color: aqua; */
+        }
+        .news .news_work .slider_item{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .news .news_work .slider_item .news_txt{
+            width: 40%;
+            height: 50%;
+            margin-right:70px;
+            text-align:end;
+            position: relative;
+        }
+        .news .news_work .slider_item .news_txt h2{
+            font-size: 50px;
+            color: #aaa;
+            position: absolute;
+            top: 0;
+            right: -60px;
+        }
+        .news .news_work .slider_item .news_txt p{
+            font-size: 20px;
+            line-height: 4em;
+            color: #aaa;
+            position: absolute;
+            top: 40px;
+            right: 0;
+        }
+        .news .news_work .slider_item .news_txt a{
+            display: inline-block;
+            border: 1px solid #aaa;
+            padding: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            color:#aaa;
+            position: absolute;
+            top:200px;
+            right: 0;
+        }
+        .news .news_work .slider_item .news_img{
+            margin-right:auto;
+            text-align: right;
+            width: 44%;
+        }
+        .news .news_work .slider_item .news_img img{
+            width: 100%;
+        }
+        .news .navDiv{
+           font-size: 0;
+           text-align: center;
+           margin:20px 0 100px;
+        }
+        .news .navDiv a{
+            display: inline-block;
+            margin: 5px;
+            width: 56px;
+            height: 4px;
+            border-radius: 20px;
+            border: 2px solid #ccc;
+            background-color: #ccc;
+        }
+        .design_title{
+            width: 100%;
+            height: 70px;
+            background-color: #fff;
+            border-bottom: 2px solid #aaa;
+            text-align: center;
+            font-size: 30px;
+            color: rgb(134, 134, 134);
+            line-height: 2em;
+        }
+        .design{
+            width: 100%;
+        }
+        .design .design_wrap {
+            width: 80%;
+            height: 700px;
+            margin:auto;
+            position: relative;
+        }
+        .design .design_wrap .design_img{
+            width: 40%;
+            position: absolute;
+            top: 7%;
+        }
+        .design .design_wrap .design_img img{
+            width: 100%;
+        }
+        .design .design_wrap .design_txt{
+            background-color:#eee;
+            width: 550px;
+            height: 300px;
+            text-align: center;
+            position: absolute;
+            bottom: 12%;
+            z-index: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .design .design_wrap .design_txt h3{
+            padding: 50px;
+            font-size: 25px;
+        }
+        .design :nth-child(1) .design_txt{
+            left: 18%;
+            
+        }
+        .design :nth-child(1) .design_img{
+            right: 10%;
+            
+        }
+        .design :nth-child(2) .design_txt{
+            right: 18%;
+        }
+        .design :nth-child(2) .design_img{
+            left: 10%;
+        }
+        .special .special_img{
+            width: 90%;
+            margin: 80px auto;
+            position: relative;
+        }
+        
+        .special .special_img img{
+            width: 100%;   
+        }
+        .special .special_img :nth-child(2){
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .special .special_img .push_btn{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 100%;
+            font-size: 40px;
+            font-weight: 500;
+            color: #aaa;
+            text-align: center;
+            line-height: 80px;
+            font-family:Arial, sans-serif;
+        }
+        .special .special_img .push_btn::before{
+            content:'';
+            position: absolute;
+            height:650px;
+            width: 3px;
+            bottom:-350%;
+            left:50%;
+            background-color: #fff;
+        }
+        .back{
+            width: 100%;
+            height: 80px;
+            background-color: #eee;
+            text-align: center;
+
+        }
+        .back a{
+            display: inline-block;
+            margin: 20px;
+            text-decoration: none;
+            font-size: 40px;
+            color: #aaa;
+        }
+        .foot{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 360px;
+            background-color: #000;
+
+        }
+        .foot .wrap{
+            width:29%;
+            height:80%;
+            margin:30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+            /* background-color: beige; */
+        }
+        .foot .wrap p{
+            color: rgb(139, 112, 76);
+        }
+        .foot :nth-child(1) p{
+            align-self:start;
+            margin: 5px;
+            font-size: 15px; 
+        }
+        .foot :nth-child(2){
+            justify-content: center;
+        }
+        .foot :nth-child(2) .name{
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        .foot :nth-child(2) .icon_all{
+            display: flex;
+            margin-top: 16px;
+        }
+        .foot :nth-child(2) .icon_all a{
+            width:20px;
+            height:20px;
+            padding:8px;
+            margin:8px;
+            line-height:1.2em;
+            text-align:center;
+            border-radius: 100%;
+            border: 2px solid rgb(139, 112, 76);
+        }
+        .foot :nth-child(2) .icon_all i{
+            font-size:20px;
+            color: rgb(139, 112, 76);
+        }
+        .foot :nth-child(3) p{
+            align-self:end;
+            font-size: 15px; 
+        }
+        .foot .logo2{
+            width: 60px;
+            padding: 25px;
+            border: 2px solid rgb(139, 112, 76);
+            border-radius: 100%;
+        }
+        .foot .logo2 img{
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="menu_control">
+    <div class="main_wrap">
+        <div class="main_nav">
+            <div class="logo">
+                <a href="index.html"><img src="image/letter_m_PNG90.png" alt="logo"></a>
+            </div>
+            <Label for="menu_control" class="menu_btn">
+                <a href="">MENU</a>
+            </Label>
+            <div class="hidenav">
+                <ul>
+                    <li>
+                        <a href="">HOME</a>
+                    </li>
+                    <li>
+                        <a href="">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="">PORTFOLIO</a>
+                    </li>
+                    <li>
+                        <a href="">SERVICE</a>
+                    </li>
+                    <li>
+                        <a href="">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidenav">
+
+            </div>
+        </div>
+        <div class="banner" id="banner">
+            <div class="banner_item">
+                <img src="image/banner1.png" alt="banner1">
+            </div>
+            <div class="banner_item">
+                <img src="image/banner2.png" alt="banner1">
+            </div>
+            <div class="banner_item">
+                <img src="image/banner3.png" alt="banner1">
+            </div>
+            <div class="changebutton">
+                <div class="prev"><a href="#">&lt;</a></div>
+                <div class="next"><a href="#">&gt;</a></div>
+            </div>
+            <div class="scroll">
+                <h2>scroll</h2>
+            </div>
+        </div>
+        <div class="news">
+            <div class="news_work">
+                <div class="slider_item">
+                    <div class="news_img">
+                        <img src="image/newWork1.png" alt="new1">
+                    </div>
+                    <div class="news_txt">
+                        <h2>
+                           金合名園 
+                        </h2>
+                        <p>
+                            坐擁隱世大花園，大地坪開放格局
+                        </p>
+                        <a href="">learn more</a>
+                    </div>
+                </div>
+                <div class="slider_item">
+                    <div class="news_img">
+                        <img src="image/newWork1.png" alt="new1">
+                    </div>
+                    <div class="news_txt">
+                        <h2>
+                           金合名園 
+                        </h2>
+                        <p>
+                            坐擁隱世大花園，大地坪開放格局
+                        </p>
+                        <a href="">learn more</a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navDiv">
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;"></a>
+            </nav>   
+        </div>
+        <div class="design_title">
+            <h1>設計風格</h1>
+        </div>
+        <div class="design">
+            <div class="design_wrap">
+                <div class="design_txt">
+                    <h3>溫暖簡樸</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Sed rerum cumque tempore, esse, iure dignissimos blanditiis 
+                        doloribus sequi unde explicabo sint exercitationem consectetur, 
+                        repudiandae amet? Eos labore fugiat similique temporibus.</p>
+                </div>
+                <div class="design_img">
+                    <img src="image/style1.png" alt="圖1">
+                </div>
+            </div>
+            <div class="design_wrap">
+                <div class="design_txt">
+                    <h3>大氣時尚</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Sed rerum cumque tempore, esse, iure dignissimos blanditiis 
+                        doloribus sequi unde explicabo sint exercitationem consectetur, 
+                        repudiandae amet? Eos labore fugiat similique temporibus.</p>
+                </div>
+                <div class="design_img">
+                    <img src="image/style2.png" alt="圖1">
+                </div>
+            </div>
+        </div>
+        <div class="special">
+            <div class="title">
+                <h3></h3>
+            </div>
+            <div class="special_img">
+                <img src="image/special1.png" alt="組1拉圖1">
+                <img src="image/special2.png" alt="組1拉圖2">
+                <div class="push_btn">
+                    <p>&lt; &gt;</p>
+                </div>
+            </div>
+            <div class="special_img">
+                <img src="image/special3.png" alt="組1拉圖1">
+                <img src="image/special4.png" alt="組1拉圖2">
+                <div class="push_btn">
+                    <p>&lt; &gt;</p>
+                </div>
+            </div>
+        </div>
+        <div class="back">
+            <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+        </div>
+        <div class="foot">
+            <div class="wrap">
+                <p>Mini@gmail.com</p>
+                <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
+            </div>
+            <div class="wrap">
+                <div class="logo2">
+                    <img src="image/logo_w.png" alt="logo2">
+                </div>
+                <div class="name">
+                    <p>Mini Interior Design</p>
+                </div>
+                <div class="icon_all">
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="wrap">
+                <p>網頁設計-Yun</p>
+            </div>
+        </div>
+            
+    </div>
+</body>
+</html>
