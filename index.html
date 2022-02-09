@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini_interior_design</title>
+    <script src="https://kit.fontawesome.com/41b1f20740.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <style type="text/css">
@@ -19,8 +20,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index:-1;
         }
+        #menu_control:checked ~ .main_wrap .main_nav .hidenav{
+            width:50%;
+        } 
         .main_nav{
             position: fixed;
             width: 100%;
@@ -29,29 +33,35 @@
         }
         .main_nav .logo{
             width: 50px;
-            padding: 30px 40px;
-            margin-right: auto;
+            margin:25px auto 0 25px;
         }
         .main_nav .logo img{
             width: 100%;
         }
         .main_nav .menu_btn{
             position: relative;
-            margin:30PX 40px 0;
-        }
-        .main_nav .menu_btn a{
-            display:inline-block;
+            margin:25PX 25px 0 0;
             text-align: end;
             width: 130px;
             font-size: 30px;
             font-family:"LiHei Pro";
             color: #fff;
-            text-decoration: none;
+        }
+        .main_nav .menu_btn2{
+            display:none;
+            position:absolute;
+            top: 30px;
+            right: 40px;
+            width:30px;
+            height:30px;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
         }
         .main_nav .menu_btn::before{
             content:'';
             position: absolute;
-            height: 3px;
+            height: 2.5px;
             width: 38px;
             top: 5px;
             left:0;
@@ -61,29 +71,31 @@
         .main_nav .menu_btn::after{
             content:'';
             position: absolute;
-            height: 3px;
+            height: 2.5px;
             width: 20px;
             top: 14px;
             left:17px;
             background-color: #fff;
         }
-
         .main_nav .hidenav{
             display: flex;
-            display: none;
             align-items: center;
             justify-content: center;
             position: absolute;
             top: 0;
-            left: 0;
-            width: 50%;
+            right: 50%;
+            width:0;
             height: 100vh;
             background-color: rgb(0, 0, 0,0.8);
+            transition:1.5s;
+            z-index: 2;
         }
         .main_nav .hidenav+.hidenav{
             left: 50%;
+            z-index: 1;
         }
         .main_nav .hidenav ul{
+            display:none;
             text-align: center;
         }
         .main_nav .hidenav ul a{
@@ -102,14 +114,41 @@
         .banner .banner_item{
             position: absolute;
             top: 0;
-            right: 0;
+            left: 0;
             width: 100%;
             height: 100vh;
             overflow: hidden;
         }
+        .banner .banner_item:not(:first-child){
+            opacity: 0;
+        }
         .banner img{
             width: 100%;
-            /* height: 100vh; */
+            height: 100vh;
+            object-fit:cover;
+        }
+        @keyframes ophide{
+            0%{
+                opacity:1;
+                z-index:1;
+            }
+            90%{
+                opacity:0;
+                z-index:1;
+            }
+            100%{
+                opacity:0;
+                z-index:0;
+            }
+        }
+        @keyframes opshow{
+            0%{
+                opacity:0;
+
+            }
+            100%{
+                opacity:1 ;
+            }
         }
         .banner .changebutton{
             display: flex;
@@ -119,6 +158,7 @@
             font-family:"微軟正黑體";
             top: 50%;
             transform: translateY(-50%);
+            z-index: 2;
         }
         .banner .changebutton div{
             margin: 0 70px;
@@ -144,6 +184,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
+            z-index: 2;
         }
         .scroll::after{
             content:'';
@@ -155,27 +196,31 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
-        .news .news_work{
+        .news{
+            width:60%;
+            height:700px;
+            margin: 160px auto 60px;
             position: relative;
-            width: 60%;
+            overflow: hidden;
+        }
+        .news .news_work{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
             height: 600px;
-            margin: 160px auto 0;
-            /* background-color: aqua; */
         }
         .news .news_work .slider_item{
             display: flex;
             align-items: center;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            width: 1140px;
+            height: 600px;
+            box-sizing: border-box;
         }
         .news .news_work .slider_item .news_txt{
             width: 40%;
             height: 50%;
             margin-right:70px;
-            text-align:end;
             position: relative;
         }
         .news .news_work .slider_item .news_txt h2{
@@ -187,10 +232,10 @@
         }
         .news .news_work .slider_item .news_txt p{
             font-size: 20px;
-            line-height: 4em;
+            line-height: 30px;
             color: #aaa;
             position: absolute;
-            top: 40px;
+            top: 60px;
             right: 0;
         }
         .news .news_work .slider_item .news_txt a{
@@ -205,17 +250,19 @@
             right: 0;
         }
         .news .news_work .slider_item .news_img{
-            margin-right:auto;
-            text-align: right;
-            width: 44%;
+            margin:10px 10px;
+            width: 45%;
         }
         .news .news_work .slider_item .news_img img{
             width: 100%;
         }
         .news .navDiv{
-           font-size: 0;
-           text-align: center;
-           margin:20px 0 100px;
+            position: absolute;
+            font-size: 0;
+            text-align: center;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .news .navDiv a{
             display: inline-block;
@@ -223,8 +270,10 @@
             width: 56px;
             height: 4px;
             border-radius: 20px;
-            border: 2px solid #ccc;
-            background-color: #ccc;
+            border: 2px solid #aaa;
+        }
+        .news .navDiv :first-child{
+            background-color: #aaa;
         }
         .design_title{
             width: 100%;
@@ -269,32 +318,83 @@
             font-size: 25px;
         }
         .design :nth-child(1) .design_txt{
-            left: 18%;
-            
+            left: -10%;
+            opacity: 0; 
         }
         .design :nth-child(1) .design_img{
-            right: 10%;
-            
+            right:-10%;
+            opacity: 0;
         }
         .design :nth-child(2) .design_txt{
-            right: 18%;
+            right: 30%;
+            opacity: 0;
         }
         .design :nth-child(2) .design_img{
-            left: 10%;
+            left: 32%;
+            opacity: 0;
+        }
+        @keyframes txtmovein{
+            0%{
+                left: -10%;
+                opacity: 0;
+            }
+            100%{
+                left:18%;
+                opacity: 1;
+            }
+        }
+        @keyframes imgmovein{
+            0%{
+                right: -10%;
+                opacity: 0;
+            }
+            100%{
+                right:10%;
+                opacity: 1;
+            }
+        }
+        @keyframes txtmoveout{
+            0%{
+                right:30%;
+                opacity: 0;
+            }
+            100%{
+                right: 18%;
+                opacity: 1;
+            }
+        }
+        @keyframes imgmoveout{
+            0%{
+                left: 32%;
+                opacity: 0;
+            }
+            100%{
+                left: 10%;
+                opacity: 1;
+            }
         }
         .special .special_img{
             width: 90%;
+            height: 635px;
             margin: 80px auto;
             position: relative;
+            overflow: hidden;
         }
         
         .special .special_img img{
             width: 100%;   
         }
-        .special .special_img :nth-child(2){
+        .special .special_img .change_img{
             position: absolute;
             top: 0;
             left: 0;
+            height: 635px;
+            overflow: hidden;
+        }
+        .special .special_img .change_img img{
+            height: 100%;
+            object-fit: cover;
+            object-position:0% 0%;
         }
 
         .special .special_img .push_btn{
@@ -306,7 +406,7 @@
             height: 80px;
             background-color: #fff;
             border-radius: 100%;
-            font-size: 40px;
+            font-size: 50px;
             font-weight: 500;
             color: #aaa;
             text-align: center;
@@ -352,7 +452,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: end;
-            /* background-color: beige; */
         }
         .foot .wrap p{
             color: rgb(139, 112, 76);
@@ -400,6 +499,124 @@
         .foot .logo2 img{
             width: 60px;
         }
+        @media screen and (max-width:768px){
+            .banner .changebutton{
+                font-size: 50px;
+            }
+            .banner .changebutton div{
+                margin: 0 40px;
+            }
+            .news .news_work{
+                width: 96%;
+                margin: 60px auto 0;
+            }
+            .news .news_work .slider_item{
+                flex-direction: column;
+            }
+            .news .news_work .slider_item .news_txt{
+                width:100%;
+                height: 30%;
+                margin:0;
+            }
+            .news .news_work .slider_item .news_txt h2{
+                font-size: 30px;
+                top: 20px;
+                right:50%;
+                transform:translateX(50%);
+            }
+            .news .news_work .slider_item .news_txt p{
+                font-size: 16px;
+                top: 70px;
+                right:17%;
+            }
+            .news .news_work .slider_item .news_txt a{
+                top:120px;
+                right:50%;
+                transform: translateX(50%);
+            }
+            .news .news_work .slider_item .news_img{
+                margin:0;
+                width:100%;
+            }
+            .news .news_work .slider_item .news_img img{
+                width: 100%;
+            }
+            .news .navDiv a{
+                width: 45px;
+                height: 2px;
+            }
+            .design .design_wrap {
+                width: 90%;
+                height: 640px;
+            }
+            .design .design_wrap .design_img{
+                width:100%;
+                top: 7%;
+            }
+            .design .design_wrap .design_txt{
+                width:100%;
+                height: 240px;
+                top: 60%;
+            }
+            .design .design_wrap .design_txt h3{
+                padding: 24px;
+            }
+            .design :nth-child(1) .design_txt{
+                left:0;
+                
+            }
+            .design :nth-child(1) .design_img{
+                right:0;
+                
+            }
+            .design :nth-child(2) .design_txt{
+                right:0;
+            }
+            .design :nth-child(2) .design_img{
+                left:0;
+            }
+            .special .special_img{
+                width: 100%;
+                margin: 30px 0;
+            }
+            .special .special_img img{
+                width: 100%;
+            }
+            .special .special_img .push_btn{
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                line-height: 64px;
+            }
+            .special .special_img .push_btn::before{
+                height:140px;
+                width: 3px;
+                bottom:-65%;
+                background-color: #fff;
+            }
+            .foot{
+                flex-direction: column;
+            }
+            .foot .wrap{
+                width:100%;
+                margin:auto;
+                justify-content:center;
+            }
+            .foot :nth-child(1) p{
+                align-self:center;
+                margin-top: 4px;
+                font-size: 10px;
+            }
+            .foot :nth-child(2){
+                margin-top: 10px;
+            }
+            .foot :nth-child(2) .icon_all{
+                margin-top: 10px;
+            }
+            .foot :nth-child(3) p{
+                align-self:center;
+            }       
+        }
     </style>
 </head>
 <body>
@@ -410,29 +627,31 @@
                 <a href="index.html"><img src="image/letter_m_PNG90.png" alt="logo"></a>
             </div>
             <Label for="menu_control" class="menu_btn">
-                <a href="">MENU</a>
+                MENU
             </Label>
             <div class="hidenav">
-                <ul>
+                <ul id="nav_ul">
                     <li>
-                        <a href="">HOME</a>
+                        <a href="index.html">HOME</a>
                     </li>
                     <li>
-                        <a href="">ABOUT</a>
+                        <a href="about.html">ABOUT</a>
                     </li>
                     <li>
-                        <a href="">PORTFOLIO</a>
+                        <a href="portfolio.html">PORTFOLIO</a>
                     </li>
                     <li>
-                        <a href="">SERVICE</a>
+                        <a href="service.html">SERVICE</a>
                     </li>
                     <li>
-                        <a href="">CONTACT</a>
+                        <a href="contact.html">CONTACT</a>
                     </li>
                 </ul>
             </div>
             <div class="hidenav">
-
+                <Label for="menu_control" class="menu_btn2">
+                    <i class="fa-solid fa-x"></i>
+                </Label>
             </div>
         </div>
         <div class="banner" id="banner">
@@ -446,8 +665,8 @@
                 <img src="image/banner3.png" alt="banner1">
             </div>
             <div class="changebutton">
-                <div class="prev"><a href="#">&lt;</a></div>
-                <div class="next"><a href="#">&gt;</a></div>
+                <div class="prev"><a href="javascript:;"><i class="fa fa-angle-left" aria-hidden="true"></i></a></div>
+                <div class="next"><a href="javascript:;"><i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
             </div>
             <div class="scroll">
                 <h2>scroll</h2>
@@ -465,6 +684,34 @@
                         </h2>
                         <p>
                             坐擁隱世大花園，大地坪開放格局
+                        </p>
+                        <a href="">learn more</a>
+                    </div>
+                </div>
+                <div class="slider_item">
+                    <div class="news_img">
+                        <img src="image/newWork2.png" alt="new1">
+                    </div>
+                    <div class="news_txt">
+                        <h2>
+                           磐石邸 
+                        </h2>
+                        <p>
+                            重金打造大理石裝潢，挑高格局，大氣時尚
+                        </p>
+                        <a href="">learn more</a>
+                    </div>
+                </div>
+                <div class="slider_item">
+                    <div class="news_img">
+                        <img src="image/newWork3.png" alt="new1">
+                    </div>
+                    <div class="news_txt">
+                        <h2>
+                           暖居 
+                        </h2>
+                        <p>
+                            20坪溫馨小宅，獨特空間設計，<br>收納健全，小資族首選
                         </p>
                         <a href="">learn more</a>
                     </div>
@@ -495,26 +742,26 @@
         </div>
         <div class="design">
             <div class="design_wrap">
-                <div class="design_txt">
+                <div class="design_txt" id="dTxt1">
                     <h3>溫暖簡樸</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Sed rerum cumque tempore, esse, iure dignissimos blanditiis 
                         doloribus sequi unde explicabo sint exercitationem consectetur, 
                         repudiandae amet? Eos labore fugiat similique temporibus.</p>
                 </div>
-                <div class="design_img">
+                <div class="design_img" id="dImg1">
                     <img src="image/style1.png" alt="圖1">
                 </div>
             </div>
             <div class="design_wrap">
-                <div class="design_txt">
+                <div class="design_txt" id="dTxt2">
                     <h3>大氣時尚</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Sed rerum cumque tempore, esse, iure dignissimos blanditiis 
                         doloribus sequi unde explicabo sint exercitationem consectetur, 
                         repudiandae amet? Eos labore fugiat similique temporibus.</p>
                 </div>
-                <div class="design_img">
+                <div class="design_img" id="dImg2">
                     <img src="image/style2.png" alt="圖1">
                 </div>
             </div>
@@ -525,16 +772,18 @@
             </div>
             <div class="special_img">
                 <img src="image/special1.png" alt="組1拉圖1">
-                <img src="image/special2.png" alt="組1拉圖2">
+                <div class="change_img"><img src="image/special2.png" alt="組1拉圖2"></div>
                 <div class="push_btn">
-                    <p>&lt; &gt;</p>
+                    <span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                 </div>
             </div>
             <div class="special_img">
                 <img src="image/special3.png" alt="組1拉圖1">
-                <img src="image/special4.png" alt="組1拉圖2">
+                <div class="change_img"><img src="image/special4.png" alt="組1拉圖2"></div>
                 <div class="push_btn">
-                    <p>&lt; &gt;</p>
+                    <span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                 </div>
             </div>
         </div>
@@ -563,7 +812,108 @@
                 <p>網頁設計-Yun</p>
             </div>
         </div>
-            
     </div>
+    <script type="text/javascript" src="javascript/jquery.min.js"></script>
+    <script type="text/javascript">
+        //滾動到某點觸發動畫的回調函數
+        function startani(obj,cssname,parameter,offset) {
+                var a,b,c,d;
+                d=$(obj).offset().top;
+                a=eval(d+offset);
+                b=$(window).scrollTop();
+                c=$(window).height();
+                if(b+c>a){
+                    $(obj).css(cssname,parameter);
+                }
+        };
+
+        $(function(){
+            //導覽列出現和消失
+            $(".menu_btn").click(function(){
+                $("#nav_ul").fadeIn(2000);
+                $(".menu_btn2").fadeIn(2000);
+            });
+            $(".menu_btn2").click(function(){
+                $("#nav_ul").fadeOut(1000);
+                $(".menu_btn2").fadeOut(1000);
+            });
+            //banner換圖動畫
+            var bannerItem=document.querySelectorAll(".banner_item");
+            var index = 0;
+            var time;
+            function pichange(n,over,aninow,aninext) {
+                bannerItem[index].style.animation=aninow;
+                index=index+n;
+                if (index>bannerItem.length-1) {
+                    index=over;
+                } 
+                bannerItem[index].style.animation=aninext;
+            };
+            function tbchange(){
+                time=setInterval(function(){
+                    pichange(1,0,"ophide 2s forwards","opshow 0.1s forwards");
+                },5000);
+            };
+            tbchange();
+            $(".prev").click(function () {
+                clearInterval(time);
+                bannerItem[index].style.animation="ophide 2s forwards";
+                index--;
+                if (index<0) {
+                    index=bannerItem.length-1;
+                } 
+                bannerItem[index].style.animation="opshow 0.1s forwards";
+                tbchange();
+            });
+            $(".next").click(function () {
+                clearInterval(time);
+                pichange(1,0,"ophide 2s forwards","opshow 0.1s forwards");
+                tbchange();
+            });
+            //新作品換圖動畫
+            var w =1140*$(".slider_item").length;
+            var index2=0;
+            var time2;
+            $(".news_work").css("width",w+"px");
+            time2=setInterval(function (){
+                if ($(".news_work").position().left<=(-1140)*($(".slider_item").length-1)) {
+                    $(".news_work").css("left","0px");
+                }
+                $(".news_work").animate({left:'-=1140px'},"slow");
+            },5000);
+            
+           
+
+            //設計風格區間觸發動畫
+            $(window).scroll(function() {
+                startani("#dTxt1","animation","txtmovein 1.5s forwards",10);
+                startani("#dImg1","animation","imgmovein 1.5s forwards",100);
+                startani("#dTxt2","animation","txtmoveout 1.5s forwards",10);
+                startani("#dImg2","animation","imgmoveout 1.5s forwards",100);
+            })
+            //特別區間拖拉功能
+            var e,f,g;
+            e=$(".push_btn").offset().left;
+            f=$(".push_btn").width();
+            g=$(".change_img").offset().left;
+            $(".change_img").width(e-g+f/2);
+
+            //讓按鈕跟著鼠標移動並改變寬度
+            $(".push_btn").mousedown(function(event){
+                let i=event.clientX-$(".push_btn").offset().left;
+                $(document).mousemove(function(event){
+                    $(".push_btn").css("left",event.clientX-i-54+"px");
+                    $(".change_img").width($(".push_btn").offset().left-g+f/2);
+                    event.preventDefault();
+                });
+                $(document).mouseup(function (){
+                    $(document).unbind("mousemove");
+                });
+               
+            });
+            
+            
+        });
+    </script>
 </body>
 </html>

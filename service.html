@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini_interior_design</title>
+    <title>service</title>
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <style type="text/css">
@@ -129,36 +129,95 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
-        .title{
-          margin: 30px 0;
+        .service{
+            background-color: #eee;
+            width: 100%;
         }
-        .title h1{
+        .service .title{
+          padding: 60px 0;
+        }
+        .service .title h1{
           font-size:40px;
           text-align: center;
           font-weight: 600;
           color: rgb(92, 92, 92);
         }
-        .all_work{
-          width: 80%;
-          margin: auto;
-        } 
-        .all_work .row{
-          display: flex;
-          justify-content: center;
+        .service .title h3{
+          font-size:16px;
+          text-align: center;
+          color: rgb(92, 92, 92);
+          margin-top: 10px;
         }
-        .all_work .row .col{
-          width:30%;
-          margin: 1.5%;
-          padding: 1.2%;
-          box-sizing: border-box;
-          border: 2px solid rgb(230, 230, 230);
+        .service .process{
+            display: flex;
+            justify-content: center;
+            padding-bottom: 80px;
         }
-        .all_work .row .col img{
-          width: 100%;
+        .service .process div{
+            text-align: center;
+            margin: 0 30px;
+            border-radius: 100%;
+            border: 2px solid #aaa;
+            width: 150px;
+            height: 150px;
+            position: relative;
         }
-        .all_work .row .col h2{
-            padding: 16px 0 8px;
-            font-size: 24px;
+        .service .process div+div::before{
+            content:'';
+            position: absolute;
+            top: 50%;
+            left:-41%;
+            width: 62px;
+            height: 2px;
+            background-color: #aaa;
+        }
+        .service .process div i{
+            font-size: 56px;
+            color: rgb(92, 92, 92);
+            padding: 22px 22px 10px;
+        }
+        .service .process div p{
+            font-size: 18px;
+            color:rgb(92, 92, 92);
+            font-weight: 600;
+            font-family: "微軟正黑體";
+        }
+        .table{
+            width: 60%;
+            margin:60px auto;
+        }
+        .table .price{
+            margin-bottom:30px;
+        }
+        .table .price h2{
+            font-size:36px;
+            font-weight: 600;
+            text-align: center;
+            color: rgb(92, 92, 92);
+        }
+        .table .price h3{
+            font-size:16px;
+            margin-top:8px;
+            text-align: center;
+            color: rgb(92, 92, 92);
+        }
+        .table table{
+            width: 100%;
+            border-top: 1px solid #aaa;
+            border-bottom: 1px solid #aaa;
+        }
+        .table table tr{
+            border-bottom:1px solid #aaa;
+        }
+        .table table th{
+            background-color: #eee;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 20px 5px;
+        }
+        .table table td{
+            font-size: 16px;
+            padding: 20px 5px;
         }
         .back{
             width: 100%;
@@ -240,14 +299,32 @@
             width: 60px;
         }
         @media screen and (max-width:768px){
-            .all_work .row{
-                flex-direction: column;
+            .service .title{
+                padding: 30px 0 14px;
             }
-            .all_work .row .col{
-                width:98%;
-                margin:1%;
-                padding:10px;
+            .service .process{
+                flex-direction: column;
+                align-items: center;
+            }
+            .service .process div{
                 text-align: center;
+                margin: 28px 0;
+            }
+            .service .process div+div::before{
+                top:-40%;
+                left:50%;
+                width:2px;
+                height:60px;
+            }
+            .table{
+                width: 92%;
+                margin:40px 4% 60px;
+            }
+            .table table th{
+                font-size: 16px;
+            }
+            .table table td{
+            font-size: 14px;
             }
             .foot{
                 flex-direction: column;
@@ -266,15 +343,15 @@
                 margin-top: 10px;
             }
             .foot :nth-child(2) .icon_all{
-            margin-top: 10px;
+                margin-top: 10px;
             }
             .foot :nth-child(3) p{
                 align-self:center;
             }       
         }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <input type="checkbox" id="menu_control">
     <div class="main_nav">
       <div class="logo">
@@ -308,81 +385,131 @@
     </div>
     <div class="banner" id="banner">
       <div class="banner_item">
-          <img src="image/portfolio_banner1.png" alt="banner1">
+          <img src="image/service-banner.png" alt="banner1">
       </div>
       <div class="scroll">
         <h2>scroll</h2>
     </div>
     </div>
-    <div class="title">
-      <h1>All Work</h1>
+    <div class="service">
+        <div class="title">
+            <h1>Process</h1>
+            <h3>接洽流程</h3>
+        </div>
+        <div class="process">
+            <div>
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                <p>1.初次溝通</p>
+            </div>
+            <div>
+                <i class="fa fa-desktop" aria-hidden="true"></i>
+                <p>2.初步提案</p>
+            </div>
+            <div>
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                <p>3.確認簽約</p>
+            </div>
+            <div>
+                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                <p>4.設計討論</p>
+            </div>
+            <div>
+                <i class="fa fa-check" aria-hidden="true"></i>
+                <p>5.最終確認</p>
+            </div>
+            <div>
+                <i class="fa fa-wrench" aria-hidden="true"></i>
+                <p>6.施工階段</p>
+            </div>
+            <div>
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <p>7.驗收交屋</p>
+            </div>
+        </div>
     </div>
-    <div class="all_work">
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work1.png" alt="圖">
-          <h2>暖居</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+    <div class="table">
+        <div class="price">
+            <h2>Price</h2>
+            <h3>收費表</h3>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work2.png" alt="圖">
-          <h2>磐石邸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-        <div class="col">
-          <img src="image/portfolio_work3.png" alt="圖">
-          <h2>金合莊園</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work4.png" alt="圖">
-          <h2>森呼吸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-        <div class="col">
-          <img src="image/portfolio_work5.png" alt="圖">
-          <h2>白光</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-        <div class="col">
-          <img src="image/portfolio_work6.png" alt="圖">
-          <h2>褐色時代</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-      </div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">收費項目</th>
+                    <th scope="col">收費標準</th>
+                    <th scope="col">價格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3">1.設計費</td>
+                    <td>住宅空間</td>
+                    <td>4,500元一坪</td>
+                </tr>
+                <tr>
+                    <td>辦公空間</td>
+                    <td>3,500~6,000一坪</td>
+                </tr>
+                <tr>
+                    <td>商業空間</td>
+                    <td>6,000一坪</td>
+                </tr>
+                <tr>
+                    <td rowspan="5">2.工程費用</td>
+                    <td>全新交屋</td>
+                    <td>70,000~140,000一坪起</td>
+                </tr>
+                <tr>
+                    <td>中古屋</td>
+                    <td>90,000~160,000一坪</td>
+                </tr>
+                <tr>
+                    <td>辦公室</td>
+                    <td>需現場丈量估價</td>
+                </tr>
+                <tr>
+                    <td>商業空間</td>
+                    <td>需現場丈量估價</td>
+                </tr>
+                <tr>
+                    <td>毛胚屋</td>
+                    <td>需現場丈量估價</td>
+                </tr>
+                <tr>
+                    <td  rowspan="2">3.工程監管費</td>
+                    <td>總工程款</td>
+                </tr>
+                <tr>
+                    <td>70000元一坪</td>
+                </tr>
+            </tbody>
+           
+        </table>
     </div>
     <div class="back">
-      <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+        <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
     </div>
     <div class="foot">
-      <div class="wrap">
-          <p>Mini@gmail.com</p>
-          <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
-      </div>
-      <div class="wrap">
-          <div class="logo2">
-              <img src="image/logo_w.png" alt="logo2">
-          </div>
-          <div class="name">
-              <p>Mini Interior Design</p>
-          </div>
-          <div class="icon_all">
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-          </div>
-      </div>
-      <div class="wrap">
-          <p>網頁設計-Yun</p>
-      </div>
+        <div class="wrap">
+            <p>Mini@gmail.com</p>
+            <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
+        </div>
+        <div class="wrap">
+            <div class="logo2">
+                <img src="image/logo_w.png" alt="logo2">
+            </div>
+            <div class="name">
+                <p>Mini Interior Design</p>
+            </div>
+            <div class="icon_all">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div class="wrap">
+            <p>網頁設計-Yun</p>
+        </div>
     </div>
-  </body>
+</body>
 </html>

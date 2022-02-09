@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini_interior_design</title>
+    <title>contact</title>
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <style type="text/css">
@@ -129,36 +129,47 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
-        .title{
-          margin: 30px 0;
+        .contact{
+            display: flex;
+            justify-content: center;
+            margin: 100px 0;
         }
-        .title h1{
-          font-size:40px;
-          text-align: center;
-          font-weight: 600;
-          color: rgb(92, 92, 92);
+        .contact h2{
+            font-size: 30px;
+            font-weight: 600;
+            color: #555;
         }
-        .all_work{
-          width: 80%;
-          margin: auto;
-        } 
-        .all_work .row{
-          display: flex;
-          justify-content: center;
+        .contact input[type="text"]{
+            display: block;
+            margin: 20px 80px 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 500px;
+            height: 40px;
         }
-        .all_work .row .col{
-          width:30%;
-          margin: 1.5%;
-          padding: 1.2%;
-          box-sizing: border-box;
-          border: 2px solid rgb(230, 230, 230);
+        .contact textarea{
+            display: block;
+            margin: 20px 80px 0 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
         }
-        .all_work .row .col img{
-          width: 100%;
+        .contact input[type="checkbox"]{
+            margin-top: 14px;
+            color: #555;
         }
-        .all_work .row .col h2{
-            padding: 16px 0 8px;
-            font-size: 24px;
+        .contact input[type="submit"]{
+            display: block;
+            border: none;
+            margin: 14px 0;
+            width: 100px;
+            height: 40px;
+            color: #fff;
+            background-color: black;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .contact .map{
+            margin: auto 0;
         }
         .back{
             width: 100%;
@@ -190,7 +201,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: end;
-            /* background-color: beige; */
         }
         .foot .wrap p{
             color: rgb(139, 112, 76);
@@ -203,8 +213,18 @@
         .foot :nth-child(2){
             justify-content: center;
         }
+        .foot .logo2{
+            width: 60px;
+            height: 60px;
+            padding: 25px;
+            border: 2px solid rgb(139, 112, 76);
+            border-radius: 100%;
+        }
+        .foot .logo2 img{
+            width: 60px;
+        }
         .foot :nth-child(2) .name{
-            margin-top: 20px;
+            margin-top:20px;
             font-size: 22px;
         }
         .foot :nth-child(2) .icon_all{
@@ -229,25 +249,37 @@
             align-self:end;
             font-size: 15px; 
         }
-        .foot .logo2{
-            width: 60px;
-            height: 60px;
-            padding: 25px;
-            border: 2px solid rgb(139, 112, 76);
-            border-radius: 100%;
-        }
-        .foot .logo2 img{
-            width: 60px;
-        }
+        
         @media screen and (max-width:768px){
-            .all_work .row{
+            .contact{
                 flex-direction: column;
+                margin: 20% 5%;
             }
-            .all_work .row .col{
-                width:98%;
-                margin:1%;
-                padding:10px;
+            .contact h2{
                 text-align: center;
+            }
+            .contact input[type="text"]{
+                margin: 20px 3%;
+                width: 94%;
+                height: 30px;
+            }
+            .contact textarea{
+                margin: 20px 3%;
+                width: 94%;
+            }
+            .contact input[type="submit"]{
+                border: none;
+                margin: 20px 0;
+                width: 100px;
+                height: 40px;
+                color: #fff;
+                background-color: black;
+                border-radius: 10px;
+                font-size: 16px;
+            }
+            .contact .map iframe{
+                width: 100%;
+                height: 260px;
             }
             .foot{
                 flex-direction: column;
@@ -273,8 +305,8 @@
             }       
         }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <input type="checkbox" id="menu_control">
     <div class="main_nav">
       <div class="logo">
@@ -308,81 +340,54 @@
     </div>
     <div class="banner" id="banner">
       <div class="banner_item">
-          <img src="image/portfolio_banner1.png" alt="banner1">
+          <img src="image/contact-banner.png" alt="banner1">
       </div>
       <div class="scroll">
         <h2>scroll</h2>
     </div>
     </div>
-    <div class="title">
-      <h1>All Work</h1>
-    </div>
-    <div class="all_work">
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work1.png" alt="圖">
-          <h2>暖居</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+    <div class="contact">
+        <div class="wrap">
+            <h2>Contact</h2>
+            <form class="send_mail">
+                <input type="text" id="name" placeholder="  姓名*">
+                <input type="text" id="phone" placeholder="  電話*">
+                <input type="text" id="mail" placeholder="  E-mail*">
+                <input type="text" id="time" placeholder="  聯絡時間*">
+                <textarea name="message" rows="16" cols="65" placeholder="  諮詢內容*"></textarea>
+                <input type="checkbox" id="checkbox" value="確認"> 
+                <label for="checkbox">確定填寫完畢後打勾</label>
+                <input type="submit">
+            </form>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work2.png" alt="圖">
-          <h2>磐石邸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.7668887799173!2d120.68228751536745!3d24.14482337951017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693d6b9b1624e5%3A0x104e57f0c891d03b!2z6Ie65Lit5YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1644142631049!5m2!1szh-TW!2stw" width="800" height="460" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work3.png" alt="圖">
-          <h2>金合莊園</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work4.png" alt="圖">
-          <h2>森呼吸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-        <div class="col">
-          <img src="image/portfolio_work5.png" alt="圖">
-          <h2>白光</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-        <div class="col">
-          <img src="image/portfolio_work6.png" alt="圖">
-          <h2>褐色時代</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
-        </div>
-      </div>
     </div>
     <div class="back">
-      <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+        <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
     </div>
     <div class="foot">
-      <div class="wrap">
-          <p>Mini@gmail.com</p>
-          <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
-      </div>
-      <div class="wrap">
-          <div class="logo2">
-              <img src="image/logo_w.png" alt="logo2">
-          </div>
-          <div class="name">
-              <p>Mini Interior Design</p>
-          </div>
-          <div class="icon_all">
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-          </div>
-      </div>
-      <div class="wrap">
-          <p>網頁設計-Yun</p>
-      </div>
+        <div class="wrap">
+            <p>Mini@gmail.com</p>
+            <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
+        </div>
+        <div class="wrap">
+            <div class="logo2">
+                <img src="image/logo_w.png" alt="logo2">
+            </div>
+            <div class="name">
+                <p>Mini Interior Design</p>
+            </div>
+            <div class="icon_all">
+                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div class="wrap">
+            <p>網頁設計-Yun</p>
+        </div>
     </div>
-  </body>
+</body>
 </html>
