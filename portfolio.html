@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini_interior_design</title>
+    <script src="https://kit.fontawesome.com/41b1f20740.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <style type="text/css">
@@ -18,8 +19,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index:-1;
         }
+        #menu_control:checked ~ .main_wrap .main_nav .hidenav{
+            width:50%;
+        } 
         .main_nav{
             position: fixed;
             width: 100%;
@@ -36,61 +40,98 @@
         .main_nav .menu_btn{
             position: relative;
             margin:25PX 25px 0 0;
-        }
-        .main_nav .menu_btn a{
-            display:inline-block;
             text-align: end;
             width: 130px;
             font-size: 30px;
             font-family:"LiHei Pro";
             color: #fff;
-            text-decoration: none;
+            cursor: pointer; 
         }
-        .main_nav .menu_btn::before{
+        .main_nav .menu_btn2{
+            display:none;
+            position:absolute;
+            top: 30px;
+            right: 40px;
+            width:30px;
+            height:30px;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer; 
+        }
+        .main_nav .menu_btn:before{
             content:'';
             position: absolute;
-            height: 2.5px;
+            height: 2.2px;
             width: 38px;
             top: 5px;
-            left:0;
+            right:92px;
             background-color: #fff;
             box-shadow: 0px 18px 0px #fff;
         }
-        .main_nav .menu_btn::after{
+        
+        .main_nav .menu_btn:after{
             content:'';
             position: absolute;
-            height: 2.5px;
+            height: 2.2px;
             width: 20px;
             top: 14px;
-            left:17px;
+            right:92px;
             background-color: #fff;
+            transition: 0.5s;
         }
-
+        .main_nav .menu_btn:hover:after{
+            width: 38px;
+        }
         .main_nav .hidenav{
             display: flex;
-            display: none;
             align-items: center;
             justify-content: center;
             position: absolute;
             top: 0;
-            left: 0;
-            width: 50%;
+            right: 50%;
+            width:0;
             height: 100vh;
             background-color: rgb(0, 0, 0,0.8);
+            transition:1.5s;
+            z-index: 2;
         }
         .main_nav .hidenav+.hidenav{
             left: 50%;
+            z-index: 1;
         }
         .main_nav .hidenav ul{
-            text-align: center;
+            display:none;
+            text-align:center;
+        }
+        .main_nav .hidenav ul li{
+            position: relative;
+            transition: 0.5s;
+        }
+        .main_nav .hidenav ul li:hover{
+            transform: translateX(-25px);
         }
         .main_nav .hidenav ul a{
+            position: relative;
             text-decoration: none;
             font-size: 25px;
             line-height: 2.5em;
             color: #fff;
             font-family:Arial;
             letter-spacing: 0.3em;
+        }
+        .main_nav .hidenav ul li a:before{
+            content:'';
+            position: absolute;
+            width: 0px;
+            height: 1px;
+            top: 50%;
+            left:100%;
+            background-color: #fff;
+            transition: 0.5s;
+        }
+        .main_nav .hidenav ul li a:hover:before{
+            width: 70px;
         }
         .banner{
            position: relative;
@@ -129,6 +170,93 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
+        .banner_title{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 24px;
+            font-size: 60px;
+            letter-spacing: .2em;
+            color: transparent;
+            background-color:transparent;
+            animation: btchange 4s forwards;
+        }
+        .banner_title:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            width: 0px;
+            height: 4px;
+            animation: line1 2s forwards;
+        }
+        .banner_title:after{
+            content: '';
+            position: absolute;
+            bottom:0;
+            right: 0;
+            background-color: #fff;
+            width: 0px;
+            height: 4px;
+            animation: line1 2s forwards;
+        }
+        .banner_title h1:before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            width: 4px;
+            height: 0px;
+            animation: line2 2s forwards;
+        }
+        .banner_title h1:after{
+            content: '';
+            position: absolute;
+            top:0;
+            right: 0;
+            background-color: #fff;
+            width: 4px;
+            height: 0px;
+            animation: line2 2s forwards;
+        }
+        @keyframes line1{
+            0%{
+                width:0px;
+            }
+            100%{
+                width: 480px;
+            }
+        }
+        @keyframes line2{
+            0%{
+                height: 0px;
+            }
+            100%{
+                height: 108px;
+            }
+        }
+        @keyframes btchange{
+            0%{
+                background-color:transparent;
+            }
+            50%{
+                background-color:transparent;
+            }
+            67%{
+                background-color:rgb(0, 0, 0,0.8);
+            }
+            70%{
+                background-color:rgb(0, 0, 0,0.8);
+                color: transparent;
+            }
+            100%{
+                background-color:rgb(0, 0, 0,0.8);
+                color: #fff;
+            }
+        }    
         .title{
           margin: 30px 0;
         }
@@ -153,8 +281,36 @@
           box-sizing: border-box;
           border: 2px solid rgb(230, 230, 230);
         }
+        .all_work .row .col .col_img{
+            width: 100%;
+            position: relative;
+        }
         .all_work .row .col img{
           width: 100%;
+          vertical-align: middle;
+        }
+        .all_work .row .col .link_icon{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .all_work .row .col .link_icon i{
+            color: #fff;
+            font-size: 26px;
+            padding: 14px;
+            border: 2px solid #fff;
+            border-radius: 100%;
+        }
+        .all_work .row .col .link_icon:hover{
+            opacity: 1;
         }
         .all_work .row .col h2{
             padding: 16px 0 8px;
@@ -214,16 +370,20 @@
         .foot :nth-child(2) .icon_all a{
             width:20px;
             height:20px;
-            padding:8px;
+            padding:8px 10px 8px 8px;
             margin:8px;
             line-height:1.2em;
             text-align:center;
             border-radius: 100%;
             border: 2px solid rgb(139, 112, 76);
+            transition: .3s;
         }
         .foot :nth-child(2) .icon_all i{
             font-size:20px;
             color: rgb(139, 112, 76);
+        }
+        .foot :nth-child(2) .icon_all a:hover{
+            background-color:rgb(139, 112, 76);
         }
         .foot :nth-child(3) p{
             align-self:end;
@@ -276,113 +436,181 @@
   </head>
   <body>
     <input type="checkbox" id="menu_control">
-    <div class="main_nav">
-      <div class="logo">
-          <a href="index.html"><img src="image/letter_m_PNG90.png" alt="logo"></a>
-      </div>
-      <Label for="menu_control" class="menu_btn">
-          <a href="">MENU</a>
-      </Label>
-      <div class="hidenav">
-          <ul>
-              <li>
-                  <a href="index.html">HOME</a>
-              </li>
-              <li>
-                  <a href="about.html">ABOUT</a>
-              </li>
-              <li>
-                  <a href="portfolio.html">PORTFOLIO</a>
-              </li>
-              <li>
-                  <a href="service.html">SERVICE</a>
-              </li>
-              <li>
-                  <a href="contact.html">CONTACT</a>
-              </li>
-          </ul>
-      </div>
-      <div class="hidenav">
-
-      </div>
-    </div>
-    <div class="banner" id="banner">
-      <div class="banner_item">
-          <img src="image/portfolio_banner1.png" alt="banner1">
-      </div>
-      <div class="scroll">
-        <h2>scroll</h2>
-    </div>
-    </div>
-    <div class="title">
-      <h1>All Work</h1>
-    </div>
-    <div class="all_work">
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work1.png" alt="圖">
-          <h2>暖居</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+    <div class="main_wrap">
+        <div class="main_nav">
+            <div class="logo">
+                <a href="index.html"><img src="image/letter_m_PNG90.png" alt="logo"></a>
+            </div>
+                <Label for="menu_control" class="menu_btn">
+                    MENU
+                </Label>
+            <div class="hidenav">
+                <ul id="nav_ul">
+                    <li>
+                        <a href="index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="about.html">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html">PORTFOLIO</a>
+                    </li>
+                    <li>
+                        <a href="service.html">SERVICE</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="hidenav">
+                <Label for="menu_control" class="menu_btn2">
+                    <i class="fa-solid fa-x"></i>
+                </Label>
+            </div>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work2.png" alt="圖">
-          <h2>磐石邸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="banner" id="banner">
+            <div class="banner_item">
+                <img src="image/portfolio_banner1.png" alt="banner1">
+            </div>
+            <div class="scroll">
+                <h2>scroll</h2>
+            </div>
+            <div class="banner_title">
+                <h1>PORTFOLIO</h1>
+            </div>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work3.png" alt="圖">
-          <h2>金合莊園</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="title">
+            <h1>All Work</h1>
         </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <img src="image/portfolio_work4.png" alt="圖">
-          <h2>森呼吸</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="all_work">
+            <div class="row">
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work1.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>暖居</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work2.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>磐石邸</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work3.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>金合莊園</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work4.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>森呼吸</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work5.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>白光</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+                <div class="col">
+                    <div class="col_img">
+                        <a href="">
+                            <img src="image/portfolio_work6.png" alt="圖">
+                            <div class="link_icon">
+                                <i class="fas fa-link"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <h2>褐色時代</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
+                        culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+                </div>
+            </div>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work5.png" alt="圖">
-          <h2>白光</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="back">
+            <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
         </div>
-        <div class="col">
-          <img src="image/portfolio_work6.png" alt="圖">
-          <h2>褐色時代</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci dolorum quo aspernatur,
-             culpa cupiditate dolore vel id iste dolor commodi hic officia laboriosam quia quos! Laborum in rerum nobis eligendi?</p>
+        <div class="foot">
+            <div class="wrap">
+                <p>Mini@gmail.com</p>
+                <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
+            </div>
+            <div class="wrap">
+                <div class="logo2">
+                    <img src="image/logo_w.png" alt="logo2">
+                </div>
+                <div class="name">
+                    <p>Mini Interior Design</p>
+                </div>
+                <div class="icon_all">
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="wrap">
+                <p>網頁設計-Yun</p>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="back">
-      <a href="#banner"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-    </div>
-    <div class="foot">
-      <div class="wrap">
-          <p>Mini@gmail.com</p>
-          <p>Copyrights © 2021 All Rights Reserved by 川 2022</p>
-      </div>
-      <div class="wrap">
-          <div class="logo2">
-              <img src="image/logo_w.png" alt="logo2">
-          </div>
-          <div class="name">
-              <p>Mini Interior Design</p>
-          </div>
-          <div class="icon_all">
-              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-              <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-          </div>
-      </div>
-      <div class="wrap">
-          <p>網頁設計-Yun</p>
-      </div>
-    </div>
+    <script type="text/javascript" src="javascript/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //導覽列出現和消失
+            $(".menu_btn").click(function(){
+                $("#nav_ul").fadeIn(2000);
+                $(".menu_btn2").fadeIn(2000);
+            });
+            $(".menu_btn2").click(function(){
+                $("#nav_ul").fadeOut(1000);
+                $(".menu_btn2").fadeOut(1000);
+            });
+            $(".icon_all > a").each(
+                function (index){$(".icon_all a").eq(index)
+                .mouseenter(function (){$(".icon_all a i").eq(index).css("color","#000");})
+                .mouseleave(function (){$(".icon_all a i").eq(index).css("color","rgb(139, 112, 76)");});
+            });
+        });
+    </script>    
   </body>
 </html>

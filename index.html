@@ -46,6 +46,7 @@
             font-size: 30px;
             font-family:"LiHei Pro";
             color: #fff;
+            cursor: pointer; 
         }
         .main_nav .menu_btn2{
             display:none;
@@ -57,25 +58,31 @@
             font-size: 30px;
             text-align: center;
             color: #fff;
+            cursor: pointer; 
         }
-        .main_nav .menu_btn::before{
+        .main_nav .menu_btn:before{
             content:'';
             position: absolute;
-            height: 2.5px;
+            height: 2.2px;
             width: 38px;
             top: 5px;
-            left:0;
+            right:92px;
             background-color: #fff;
             box-shadow: 0px 18px 0px #fff;
         }
-        .main_nav .menu_btn::after{
+        
+        .main_nav .menu_btn:after{
             content:'';
             position: absolute;
-            height: 2.5px;
+            height: 2.2px;
             width: 20px;
             top: 14px;
-            left:17px;
+            right:92px;
             background-color: #fff;
+            transition: 0.5s;
+        }
+        .main_nav .menu_btn:hover:after{
+            width: 38px;
         }
         .main_nav .hidenav{
             display: flex;
@@ -98,13 +105,34 @@
             display:none;
             text-align: center;
         }
+        .main_nav .hidenav ul li{
+            position: relative;
+            transition: 0.5s;
+        }
+        .main_nav .hidenav ul li:hover{
+            transform: translateX(-25px);
+        }
         .main_nav .hidenav ul a{
+            position: relative;
             text-decoration: none;
             font-size: 25px;
             line-height: 2.5em;
             color: #fff;
             font-family:Arial;
             letter-spacing: 0.3em;
+        }
+        .main_nav .hidenav ul li a:before{
+            content:'';
+            position: absolute;
+            width: 0px;
+            height: 1px;
+            top: 50%;
+            left:100%;
+            background-color: #fff;
+            transition: 0.5s;
+        }
+        .main_nav .hidenav ul li a:hover:before{
+            width: 70px;
         }
         .banner{
            position: relative;
@@ -196,10 +224,17 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
+        .news_title{
+            text-align: center;
+            margin-top: 100px;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.5em;
+        }
         .news{
             width:60%;
             height:700px;
-            margin: 160px auto 60px;
+            margin: 60px auto 60px;
             position: relative;
             overflow: hidden;
         }
@@ -213,7 +248,7 @@
         .news .news_work .slider_item{
             display: flex;
             align-items: center;
-            width: 1140px;
+            width: 100%;
             height: 600px;
             box-sizing: border-box;
         }
@@ -231,8 +266,9 @@
             right: -60px;
         }
         .news .news_work .slider_item .news_txt p{
+            width: 300px;
             font-size: 20px;
-            line-height: 30px;
+            line-height: 26px;
             color: #aaa;
             position: absolute;
             top: 60px;
@@ -276,14 +312,14 @@
             background-color: #aaa;
         }
         .design_title{
-            width: 100%;
-            height: 70px;
-            background-color: #fff;
+            width: 90%;
+            height: 100px;
+            margin: 100px auto;
             border-bottom: 2px solid #aaa;
             text-align: center;
             font-size: 30px;
-            color: rgb(134, 134, 134);
-            line-height: 2em;
+            font-weight: 600;
+            line-height: 1.5em;
         }
         .design{
             width: 100%;
@@ -373,16 +409,28 @@
                 opacity: 1;
             }
         }
+        .special .pull{
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .special .pull p{
+            font-size: 20px;
+            letter-spacing: 0.1em;
+            margin: 0 10px;
+        }
         .special .special_img{
             width: 90%;
             height: 635px;
-            margin: 80px auto;
+            margin: 20px auto;
             position: relative;
             overflow: hidden;
         }
-        
         .special .special_img img{
-            width: 100%;   
+            height: 100%;
+            object-fit: cover;
+            object-position:0% 0%;
         }
         .special .special_img .change_img{
             position: absolute;
@@ -412,6 +460,7 @@
             text-align: center;
             line-height: 80px;
             font-family:Arial, sans-serif;
+            cursor: e-resize; 
         }
         .special .special_img .push_btn::before{
             content:'';
@@ -475,16 +524,20 @@
         .foot :nth-child(2) .icon_all a{
             width:20px;
             height:20px;
-            padding:8px;
+            padding:8px 10px 8px 8px;
             margin:8px;
             line-height:1.2em;
             text-align:center;
             border-radius: 100%;
             border: 2px solid rgb(139, 112, 76);
+            transition: .3s;
         }
         .foot :nth-child(2) .icon_all i{
             font-size:20px;
             color: rgb(139, 112, 76);
+        }
+        .foot :nth-child(2) .icon_all a:hover{
+            background-color:rgb(139, 112, 76);
         }
         .foot :nth-child(3) p{
             align-self:end;
@@ -506,7 +559,7 @@
             .banner .changebutton div{
                 margin: 0 40px;
             }
-            .news .news_work{
+            .news{
                 width: 96%;
                 margin: 60px auto 0;
             }
@@ -525,12 +578,14 @@
                 transform:translateX(50%);
             }
             .news .news_work .slider_item .news_txt p{
-                font-size: 16px;
+                font-size: 14px;
                 top: 70px;
-                right:17%;
+                right:50%;
+                text-align: center;
+                transform: translateX(50%);
             }
             .news .news_work .slider_item .news_txt a{
-                top:120px;
+                top:150px;
                 right:50%;
                 transform: translateX(50%);
             }
@@ -575,24 +630,60 @@
             .design :nth-child(2) .design_img{
                 left:0;
             }
+            @keyframes txtmovein{
+                0%{
+                    left: -20%;
+                    opacity: 0;
+                }
+                100%{
+                    left:0%;
+                    opacity: 1;
+                }
+            }
+            @keyframes imgmovein{
+                0%{
+                    right: -20%;
+                    opacity: 0;
+                }
+                100%{
+                    right:0%;
+                    opacity: 1;
+                }
+            }
+            @keyframes txtmoveout{
+                0%{
+                    right:30%;
+                    opacity: 0;
+                }
+                100%{
+                    right: 0%;
+                    opacity: 1;
+                }
+            }
+            @keyframes imgmoveout{
+                0%{
+                    left: 30%;
+                    opacity: 0;
+                }
+                100%{
+                    left: 0%;
+                    opacity: 1;
+                }
+            }
             .special .special_img{
-                width: 100%;
-                margin: 30px 0;
+                width: 96%;
+                height: 240px;
+                margin: 30px auto;
             }
             .special .special_img img{
-                width: 100%;
+                object-fit: cover;
+                object-position:center center;
+            }
+            .special .special_img .change_img{
+                display: none;
             }
             .special .special_img .push_btn{
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
-                line-height: 64px;
-            }
-            .special .special_img .push_btn::before{
-                height:140px;
-                width: 3px;
-                bottom:-65%;
-                background-color: #fff;
+               display: none;
             }
             .foot{
                 flex-direction: column;
@@ -672,6 +763,10 @@
                 <h2>scroll</h2>
             </div>
         </div>
+        <div class="news_title">
+            <h2>Latest Works</h2>
+            <p>+</p>
+        </div>
         <div class="news">
             <div class="news_work">
                 <div class="slider_item">
@@ -738,7 +833,8 @@
             </nav>   
         </div>
         <div class="design_title">
-            <h1>設計風格</h1>
+            <h2>Design Style</h2>
+            <p>+</p>
         </div>
         <div class="design">
             <div class="design_wrap">
@@ -767,8 +863,10 @@
             </div>
         </div>
         <div class="special">
-            <div class="title">
-                <h3></h3>
+            <div class="pull">
+                <p>&larr;</p>
+                <p>pull</p>
+                <p>	&rarr;</p>
             </div>
             <div class="special_img">
                 <img src="image/special1.png" alt="組1拉圖1">
@@ -777,6 +875,11 @@
                     <span><i class="fa fa-angle-left" aria-hidden="true"></i></span>
                     <span><i class="fa fa-angle-right" aria-hidden="true"></i></span>
                 </div>
+            </div>
+            <div class="pull">
+                <p>&larr;</p>
+                <p>pull</p>
+                <p>	&rarr;</p>
             </div>
             <div class="special_img">
                 <img src="image/special3.png" alt="組1拉圖1">
@@ -841,6 +944,7 @@
             var bannerItem=document.querySelectorAll(".banner_item");
             var index = 0;
             var time;
+            //換圖回調函數(只往前不往後)
             function pichange(n,over,aninow,aninext) {
                 bannerItem[index].style.animation=aninow;
                 index=index+n;
@@ -849,6 +953,7 @@
                 } 
                 bannerItem[index].style.animation=aninext;
             };
+            //換圖回調函數(定時版本)
             function tbchange(){
                 time=setInterval(function(){
                     pichange(1,0,"ophide 2s forwards","opshow 0.1s forwards");
@@ -870,18 +975,47 @@
                 pichange(1,0,"ophide 2s forwards","opshow 0.1s forwards");
                 tbchange();
             });
-            //新作品換圖動畫
-            var w =1140*$(".slider_item").length;
+            //新作品區間換圖動畫
+            var w =$(".news").width()*$(".slider_item").length;
             var index2=0;
             var time2;
+            //將導覽列背景變白回調函數
+            function setA() {
+                $(".navDiv > a").css("background-color","#fff");  
+            };
+            //設定拖拉元素框的寬度
             $(".news_work").css("width",w+"px");
-            time2=setInterval(function (){
-                if ($(".news_work").position().left<=(-1140)*($(".slider_item").length-1)) {
-                    $(".news_work").css("left","0px");
-                }
-                $(".news_work").animate({left:'-=1140px'},"slow");
-            },5000);
+            function tnchange(params) {
+                time2=setInterval(function (){
+                    index2++
+                    if (index2>$(".navDiv > a").length-1) {
+                        index2=0;
+                    }
+                    if ($(".news_work").position().left<(-$(".news").width())*($(".slider_item").length-2)) {
+                        $(".news_work").css("left","0px");
+                    }
+                    $(".news_work").animate({left:'-='+$(".news").width()},"slow");
+                    setA();
+                    $($(".navDiv > a")[index2]).css("background-color","#aaa");
+                },5000); 
+            };
+            tnchange();
             
+            //index2-(當前點擊的索引數字)*1140==圖片left值的移動距離
+                $(".navDiv > a").each(function (j) {
+                    $(".navDiv > a").eq(j).click(function (){
+                        clearInterval(time2);
+                        if (index2==0) {
+                            $(".news_work").css("left","0px");
+                        }
+                        let l =(index2-j)*$(".news").width();
+                        $(".news_work").animate({left:'+='+l+'px'},"slow");
+                        index2=j;
+                        setA();
+                        $($(".navDiv > a")[j]).css("background-color","#aaa");
+                        tnchange();
+                    });
+                });
            
 
             //設計風格區間觸發動畫
@@ -909,10 +1043,12 @@
                 $(document).mouseup(function (){
                     $(document).unbind("mousemove");
                 });
-               
             });
-            
-            
+            $(".icon_all > a").each(
+                function (index){$(".icon_all a").eq(index)
+                .mouseenter(function (){$(".icon_all a i").eq(index).css("color","#000");})
+                .mouseleave(function (){$(".icon_all a i").eq(index).css("color","rgb(139, 112, 76)");});
+            });
         });
     </script>
 </body>
