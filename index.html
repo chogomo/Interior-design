@@ -231,6 +231,97 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
+        .banner_title{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            text-align: center;
+            line-height: 1.2em;
+            transform: translate(-50%,-50%);
+            padding: 24px;
+            font-size: 60px;
+            letter-spacing: .2em;
+            z-index: 2;
+            color: transparent;
+            background-color:transparent;
+            animation: btchange 4s forwards;
+        }
+        .banner_title:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            width: 0px;
+            height: 4px;
+            animation: line1 2s forwards;
+        }
+        .banner_title:after{
+            content: '';
+            position: absolute;
+            bottom:0;
+            right: 0;
+            background-color: #fff;
+            width: 0px;
+            height: 4px;
+            animation: line1 2s forwards;
+        }
+        .banner_title h1:before{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            width: 4px;
+            height: 0px;
+            animation: line2 2s forwards;
+        }
+        .banner_title h1:after{
+            content: '';
+            position: absolute;
+            top:0;
+            right: 0;
+            background-color: #fff;
+            width: 4px;
+            height: 0px;
+            animation: line2 2s forwards;
+        }
+        @keyframes line1{
+            0%{
+                width:0px;
+            }
+            100%{
+                width: 445px;
+            }
+        }
+        @keyframes line2{
+            0%{
+                height: 0px;
+            }
+            100%{
+                height: 260px;
+            }
+        }
+        @keyframes btchange{
+            0%{
+                background-color:transparent;
+            }
+            50%{
+                background-color:transparent;
+            }
+            67%{
+                background-color:rgb(0, 0, 0,0.7);
+            }
+            70%{
+                background-color:rgb(0, 0, 0,0.7);
+                color: transparent;
+            }
+            100%{
+                background-color:rgb(0, 0, 0,0.7);
+                color: #fff;
+            }
+        }    
         .news_title{
             text-align: center;
             margin-top: 100px;
@@ -560,11 +651,33 @@
             width: 60px;
         }
         @media screen and (max-width:768px){
-            .banner .changebutton{
-                font-size: 50px;
+            .main_nav .hidenav ul{
+                transform: translateX(45%);
             }
-            .banner .changebutton div{
-                margin: 0 40px;
+            .banner .changebutton{
+                display: none;
+            }
+            .banner_title{
+                width: 200px;
+                font-size: 30px;
+                text-align: center;
+                line-height: 1.3em;
+            }
+            @keyframes line1{
+                0%{
+                    width:0px;
+                }
+                100%{
+                    width: 245px;
+                }
+            }
+            @keyframes line2{
+                0%{
+                    height: 0px;
+                }
+                100%{
+                    height: 165px;
+                }
             }
             .news{
                 width: 96%;
@@ -768,6 +881,9 @@
             </div>
             <div class="scroll">
                 <h2>scroll</h2>
+            </div>
+            <div class="banner_title">
+                <h1>MINI INTERIOR DESIGN</h1>
             </div>
         </div>
         <div class="news_title">
