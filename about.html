@@ -177,14 +177,13 @@
             background-color: #fff;
             box-shadow: 0px -58px 0px #fff;
         }
-        /**/
         .banner_title{
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%,-50%);
             padding: 24px;
-            font-size: 60px;
+            font-size: 50px;
             letter-spacing: .2em;
             color: transparent;
             background-color:transparent;
@@ -232,18 +231,18 @@
         }
         @keyframes line1{
             0%{
-                width:0px;
+                width:0%;
             }
             100%{
-                width: 440px;
+                width: 100%;
             }
         }
         @keyframes line2{
             0%{
-                height: 0px;
+                height: 0%;
             }
             100%{
-                height: 108px;
+                height: 100%;
             }
         }
         @keyframes btchange{
@@ -265,13 +264,11 @@
                 color: #fff;
             }
         }    
-        /**/
         .title{
           margin: 80px 0;
-        }
-        .title h1{
-          font-size:32px;
+          font-size:30px;
           text-align: center;
+          line-height: 1.5em;
         }
         .about{
             display: flex;
@@ -280,9 +277,8 @@
         }
         .about .about_img{
             width: 50%;
-        }
-        .about img{
-            width: 100%;
+            height: 600px;
+            background: url(image/about.png) no-repeat center/cover;
         }
         .about .about_txt{
             width: 50%;
@@ -292,17 +288,16 @@
         .about .about_txt h2{
             font-size: 60px;
             position: absolute;
-            transform: rotate(90deg);
             color: #aaa;
         }
         .about .about_txt :nth-child(1){
             top: -40px;
-            right: 0px;
+            left: 80px;
             opacity: 0;
         }
         .about .about_txt :nth-child(2){
-            top: -40px;
-            right: 120px;
+            top:-40px;
+            left:80px;
             opacity: 0;
         }
         .about .about_txt p{
@@ -318,7 +313,7 @@
                 opacity: 0;
             }
             100%{
-                top:40px;
+                top:50px;
                 opacity: 1;
             }
         }
@@ -328,7 +323,7 @@
                 opacity: 0;
             }
             100%{
-                top:100px;
+                top:110px;
                 opacity: 1;
             }
         }
@@ -415,30 +410,18 @@
         .foot .logo2 img{
             width: 60px;
         }
-        @media screen and (max-width:768px){
+        /*768為ipadmini直向寬度,820為ipadair直向寬度*/
+        @media screen and (max-width:820px){
+            .main_nav .hidenav{
+                justify-content: end;
+            }
             .main_nav .hidenav ul{
-                transform: translateX(45%);
+                transform: translateX(50%);
             }
             .banner_title{
                 font-size: 30px;
                 text-align: center;
                 line-height: 1.3em;
-            }
-            @keyframes line1{
-                0%{
-                    width:0px;
-                }
-                100%{
-                    width: 185px;
-                }
-            }
-            @keyframes line2{
-                0%{
-                    height: 0px;
-                }
-                100%{
-                    height: 125px;
-                }
             }
             .title{
                  margin: 40px 0;
@@ -455,16 +438,15 @@
                 height:360px;
             }
             .about .about_txt h2{
-                font-size: 50px;
-                transform: rotate(0deg);
+                font-size: 45px;
             }
             .about .about_txt :nth-child(1){
                 top: 20px;
-                left:20px;
+                left:30px;
             }
             .about .about_txt :nth-child(2){
                 top: 80px;
-                right:50px;
+                left:40px;
             }
             .about .about_txt p{
                 width:80%;
@@ -543,12 +525,13 @@
         </div>
         <div class="title">
             <h1>關於我們</h1>
+            <p>+</p>
         </div>
         <div class="about">
-            <div class="about_img"><img src="image/about.png" alt="照片"></div>
+            <div class="about_img"></div>
             <div class="about_txt">
-                <h2 id="h2_1">Enthusiasm</h2>
-                <h2 id="h2_2">Stylish</h2>
+                <h2 id="h2_1">Stylish</h2>
+                <h2 id="h2_2">Enthusiasm</h2>
                 <p id="P_1">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor repudiandae animi,
                     dignissimos et facere quod qui quaerat aspernatur accusantium pariatur, 
